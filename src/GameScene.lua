@@ -1,17 +1,71 @@
 require "Cocos2d"
 require "Cocos2dConstants"
 
-local GameScene = class("GameScene",function()
-    return cc.Scene:create()
-end)
+clsObject = {__ClassType = '<base class>'}
+function clsObject:inherit(o)
+    o = o or {}
+    if not self.__SubClass then
+        self.__SubClass = {}
+        setmetatable(self.__SubClass, {__mode="v"})
+    end
+    table.insert(self.__SubClass, o)
 
-function GameScene.create()
-    local scene = GameScene.new()
-    scene:addChild(scene:createLayerFarm())
-    scene:addChild(scene:createLayerMenu())
-    return scene
+    for k, v in pairs(self) do
+        if not o[k] then
+            o[k]=v
+        end
+    end
+    o.__SubClass = nil
+    o.__SuperClass = self
+
+    return o
 end
 
+function clsObject:attachToClass(Obj)
+    setmetatable(Obj, {__ObjectType="<base object>", __index = self})
+    return Obj
+end
+
+function clsObject:new(...)
+    local o = {}
+    self:attachToClass(o)
+
+    if o.__init__ then
+        o:__init__(...)
+    end
+    return o
+end
+
+GameScene = clsObject:inherit({__ClassType = '<clsGameScene>'})
+
+function GameScene:__init__()
+    self:create()
+end
+
+function GameScene:create()
+    self.scene = cc.Scene:create()
+    self.scene:addChild(self:createMainUI())
+
+    --scene:addChild(scene:createLayerFarm())
+    --scene:addChild(scene:createLayerMenu())
+    return self.scene
+end
+
+local function touchButton(sender, type)
+    local descTxt = sender:getParent():getChildByName('DescTxt')
+    descTxt:setString("abcdfd")
+end
+
+function GameScene:createMainUI()
+    local layer = cc.Layer:create()
+    local main_ui = GUIReader:shareReader():widgetFromJsonFile("DemoUI/DemoUI.ExportJson")
+    layer:addChild(main_ui)
+    
+    local startBtn = main_ui:getChildByName('StartBtn')
+    startBtn:addTouchEventListener(touchButton)
+
+    return layer
+end
 
 function GameScene:ctor()
     self.visibleSize = cc.Director:getInstance():getVisibleSize()
@@ -20,7 +74,7 @@ function GameScene:ctor()
 end
 
 function GameScene:playBgMusic()
-    local bgMusicPath = cc.FileUtils:getInstance():fullPathForFilename("background.mp3") 
+    local bgMusicPath = cc.FileUtils:getInstance():fullPathForFilename("background.mp3")
     cc.SimpleAudioEngine:getInstance():playMusic(bgMusicPath, true)
     local effectPath = cc.FileUtils:getInstance():fullPathForFilename("effect1.wav")
     cc.SimpleAudioEngine:getInstance():preloadEffect(effectPath)
