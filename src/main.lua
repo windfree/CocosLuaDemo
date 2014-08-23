@@ -26,6 +26,7 @@ local function main()
     cc.Director:getInstance():getOpenGLView():setDesignResolutionSize(480, 320, 0)
     
     --create scene 
+    class = require("class")
     local scene = require("GameScene")
     local gameScene = scene:new()
     --gameScene:playBgMusic()

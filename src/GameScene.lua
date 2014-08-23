@@ -1,42 +1,8 @@
 require "Cocos2d"
 require "Cocos2dConstants"
 
-clsObject = {__ClassType = '<base class>'}
-function clsObject:inherit(o)
-    o = o or {}
-    if not self.__SubClass then
-        self.__SubClass = {}
-        setmetatable(self.__SubClass, {__mode="v"})
-    end
-    table.insert(self.__SubClass, o)
 
-    for k, v in pairs(self) do
-        if not o[k] then
-            o[k]=v
-        end
-    end
-    o.__SubClass = nil
-    o.__SuperClass = self
-
-    return o
-end
-
-function clsObject:attachToClass(Obj)
-    setmetatable(Obj, {__ObjectType="<base object>", __index = self})
-    return Obj
-end
-
-function clsObject:new(...)
-    local o = {}
-    self:attachToClass(o)
-
-    if o.__init__ then
-        o:__init__(...)
-    end
-    return o
-end
-
-GameScene = clsObject:inherit({__ClassType = '<clsGameScene>'})
+GameScene = class:inherit({__ClassType = '<clsGameScene>'})
 
 function GameScene:__init__()
     self:create()
