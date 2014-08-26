@@ -15,6 +15,10 @@ function __G__TRACKBACK__(msg)
     return msg
 end
 
+local function gameLogic()
+    print('gameLogic')
+end
+
 local function main()
     collectgarbage("collect")
     -- avoid memory leak
@@ -30,6 +34,8 @@ local function main()
     local scene = require("GameScene")
     local gameScene = scene:new()
     --gameScene:playBgMusic()
+
+    CCDirector:sharedDirector():getScheduler():scheduleScriptFunc(gameLogic, 0, false)
     
     if cc.Director:getInstance():getRunningScene() then
         cc.Director:getInstance():replaceScene(gameScene.scene)
