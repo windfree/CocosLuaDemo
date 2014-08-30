@@ -35,7 +35,7 @@ local function main()
     local gameScene = scene:new()
     --gameScene:playBgMusic()
 
-    CCDirector:sharedDirector():getScheduler():scheduleScriptFunc(gameLogic, 0, false)
+    --CCDirector:sharedDirector():getScheduler():scheduleScriptFunc(gameLogic, 0, false)
     
     if cc.Director:getInstance():getRunningScene() then
         cc.Director:getInstance():replaceScene(gameScene.scene)

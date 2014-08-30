@@ -11,6 +11,9 @@ end
 function GameScene:create()
     self.scene = cc.Scene:create()
     self.scene:addChild(self:createMainUI())
+    print("+++++++++++111")
+    self.scene:addChild(self:createAni())
+    print("+++++++++++222")
 
     --scene:addChild(scene:createLayerFarm())
     --scene:addChild(scene:createLayerMenu())
@@ -20,6 +23,15 @@ end
 local function touchButton(sender, type)
     local descTxt = sender:getParent():getChildByName('DescTxt')
     descTxt:setString("abcdfd")
+end
+
+function GameScene:createAni()
+    ccs.ArmatureDataManager:getInstance():addArmatureFileInfo("DemoAnimation/DemoAnimation.exportJson")
+    local armature = ccs.Armature:create("DemoAnimation")
+    print('++++++createAni', armature)
+    --armature:setTage(123)
+    --armature:setPosition(300, 300)
+    return armature
 end
 
 function GameScene:createMainUI()
