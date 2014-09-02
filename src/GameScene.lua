@@ -10,10 +10,10 @@ end
 
 function GameScene:create()
     self.scene = cc.Scene:create()
-    self.scene:addChild(self:createMainUI())
-    print("+++++++++++111")
-    self.scene:addChild(self:createAni())
-    print("+++++++++++222")
+    self.layer = cc.Layer:create()
+    self.scene:addChild(self.layer)
+    self.layer:addChild(self:createMainUI())
+    self.layer:addChild(self:createAni())
 
     --scene:addChild(scene:createLayerFarm())
     --scene:addChild(scene:createLayerMenu())
@@ -23,26 +23,27 @@ end
 local function touchButton(sender, type)
     local descTxt = sender:getParent():getChildByName('DescTxt')
     descTxt:setString("abcdfd")
+    local ani = sender:getParent():getParent():getChildByName('DemoAnimation')
+    ani:getAnimation():play('DemoAnimation')
+    local ani = sender:getParent():getParent():getChildByTag(1234)
+    --ani:getAnimation():play('DemoAnimation')
 end
 
 function GameScene:createAni()
-    ccs.ArmatureDataManager:getInstance():addArmatureFileInfo("DemoAnimation/DemoAnimation.exportJson")
+    ccs.ArmatureDataManager:getInstance():addArmatureFileInfo("DemoAnimation/DemoAnimation.ExportJson")
     local armature = ccs.Armature:create("DemoAnimation")
-    print('++++++createAni', armature)
-    --armature:setTage(123)
-    --armature:setPosition(300, 300)
+    armature:setPosition(50, 0)
+    armature:setTag(1234)
     return armature
 end
 
 function GameScene:createMainUI()
-    local layer = cc.Layer:create()
-    local main_ui = GUIReader:shareReader():widgetFromJsonFile("DemoUI/DemoUI.ExportJson")
-    layer:addChild(main_ui)
+    local main_ui = ccs.GUIReader:getInstance():widgetFromJsonFile("DemoUI/DemoUI.ExportJson")
     
     local startBtn = main_ui:getChildByName('StartBtn')
     startBtn:addTouchEventListener(touchButton)
 
-    return layer
+    return main_ui
 end
 
 function GameScene:ctor()

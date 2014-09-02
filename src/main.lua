@@ -27,6 +27,7 @@ local function main()
     
     cc.FileUtils:getInstance():addSearchPath("src")
     cc.FileUtils:getInstance():addSearchPath("res")
+    cc.FileUtils:getInstance():addSearchPath("res/DemoUI")
     cc.Director:getInstance():getOpenGLView():setDesignResolutionSize(480, 320, 0)
     
     --create scene 

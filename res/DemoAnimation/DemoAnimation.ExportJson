@@ -7,37 +7,6 @@
       "name": "DemoAnimation",
       "bone_data": [
         {
-          "name": "bone1",
-          "parent": "",
-          "dI": 0,
-          "x": -263.5,
-          "y": 146.42001342773438,
-          "z": 2,
-          "cX": 1.0,
-          "cY": 1.0,
-          "kX": 0.0,
-          "kY": 0.0,
-          "arrow_x": 0.0,
-          "arrow_y": 0.0,
-          "effectbyskeleton": true,
-          "display_data": [
-            {
-              "name": "BLOOD-BLUE.png",
-              "displayType": 0,
-              "skin_data": [
-                {
-                  "x": -4.0,
-                  "y": -1.0,
-                  "cX": 1.0,
-                  "cY": 1.0,
-                  "kX": 0.0,
-                  "kY": 0.0
-                }
-              ]
-            }
-          ]
-        },
-        {
           "name": "bone2",
           "parent": "",
           "dI": 0,
@@ -67,6 +36,37 @@
               ]
             }
           ]
+        },
+        {
+          "name": "bone1",
+          "parent": "",
+          "dI": 0,
+          "x": -263.5,
+          "y": 146.42001342773438,
+          "z": 1,
+          "cX": 1.0,
+          "cY": 1.0,
+          "kX": 0.0,
+          "kY": 0.0,
+          "arrow_x": 0.0,
+          "arrow_y": 0.0,
+          "effectbyskeleton": true,
+          "display_data": [
+            {
+              "name": "BLOOD-BLUE.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": -4.0,
+                  "y": -1.0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0
+                }
+              ]
+            }
+          ]
         }
       ]
     }
@@ -76,50 +76,14 @@
       "name": "DemoAnimation",
       "mov_data": [
         {
-          "name": "Animation1",
+          "name": "DemoAnimation",
           "dr": 21,
-          "lp": true,
+          "lp": false,
           "to": 0,
           "drTW": 0,
           "twE": 0,
           "sc": 1.0,
           "mov_bone_data": [
-            {
-              "name": "bone1",
-              "dl": 0.0,
-              "frame_data": [
-                {
-                  "dI": 0,
-                  "x": 0.0,
-                  "y": 0.0,
-                  "z": 0,
-                  "cX": 1.0,
-                  "cY": 1.0,
-                  "kX": 0.0,
-                  "kY": 0.0,
-                  "fi": 0,
-                  "twE": 0,
-                  "tweenFrame": true,
-                  "bd_src": 770,
-                  "bd_dst": 771
-                },
-                {
-                  "dI": 0,
-                  "x": 100.0,
-                  "y": 0.0,
-                  "z": 0,
-                  "cX": 1.0,
-                  "cY": 1.0,
-                  "kX": 0.0,
-                  "kY": 0.0,
-                  "fi": 20,
-                  "twE": 2,
-                  "tweenFrame": true,
-                  "bd_src": 770,
-                  "bd_dst": 771
-                }
-              ]
-            },
             {
               "name": "bone2",
               "dl": 0.0,
@@ -150,6 +114,42 @@
                   "kY": 0.0,
                   "fi": 14,
                   "twE": 1,
+                  "tweenFrame": true,
+                  "bd_src": 770,
+                  "bd_dst": 771
+                }
+              ]
+            },
+            {
+              "name": "bone1",
+              "dl": 0.0,
+              "frame_data": [
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 0,
+                  "twE": 0,
+                  "tweenFrame": true,
+                  "bd_src": 770,
+                  "bd_dst": 771
+                },
+                {
+                  "dI": 0,
+                  "x": 100.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 20,
+                  "twE": 2,
                   "tweenFrame": true,
                   "bd_src": 770,
                   "bd_dst": 771
